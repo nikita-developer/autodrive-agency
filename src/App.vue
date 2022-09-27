@@ -1,15 +1,28 @@
 <template>
-    <div>
-        <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-            Button
-        </button>
+    <div class="page p-2">
+        <div class="buttons">
+            <Button
+                class="sm:w-max w-full bg-sky-500 hover:bg-sky-700 rounded-md p-2 text-white"
+                >Заказать в Москву</Button
+            >
+            <Button
+                class="sm:w-max sm:ml-4 sm:mt-0 w-full bg-emerald-600 hover:bg-emerald-900 rounded-md p-2 text-white mt-4"
+                >Заказать в Санкт-Петербург</Button
+            >
+        </div>
+        <Popup>
+            <Form></Form>
+        </Popup>
     </div>
 </template>
 
 <script>
-export default {}
+import Button from './components/Button/Button.vue'
+import Form from './components/Form/Form.vue'
+import Popup from './components/Popup/Popup.vue'
+export default {
+    components: { Button, Popup, Form },
+}
 </script>
 
 <style lang="scss" scoped>
