@@ -18,6 +18,7 @@
                     class="h-9 border-slate-300 w-full border rounded p-1"
                     type="text"
                     placeholder="+7 (___) ___-__-__"
+                    v-maska="['+7 (###) ##-##-##', '+7 (###) ###-##-##']"
                 />
             </label>
             <label class="sm:mb-0 mb-2 block">
