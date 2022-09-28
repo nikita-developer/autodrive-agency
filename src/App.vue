@@ -12,7 +12,7 @@
                 >Заказать в Санкт-Петербург</Button
             >
         </div>
-        <Popup v-if="isShow" @hide="isShow = hide()">
+        <Popup v-if="isShow" @hide="isShow = hide">
             <Form></Form>
         </Popup>
     </div>
