@@ -1,5 +1,5 @@
 <template>
-    <from>
+    <form>
         <h2 class="text-2xl mb-4">Заказать звонок</h2>
         <div
             class="sm:grid sm:grid-rows-2 grid-cols-3 gap-3 items-end xl:grid-cols-4"
@@ -18,7 +18,7 @@
                     class="h-9 border-slate-300 w-full border rounded p-1"
                     type="text"
                     placeholder="+7 (___) ___-__-__"
-                    v-maska="['+7 (###) ##-##-##', '+7 (###) ###-##-##']"
+                    v-maska="['+7 (###) ###-##-##', '+7 (###) ###-##-##']"
                 />
             </label>
             <label class="sm:mb-0 mb-2 block">
@@ -37,12 +37,14 @@
                     </option>
                 </select>
             </label>
-            <Button
+            <input
+                @submit="submit"
+                type="submit"
+                value="Отправить"
                 class="h-9 w-full bg-emerald-600 hover:bg-emerald-900 rounded-md text-white xl:col-start-4"
-                >Отправить</Button
-            >
+            />
         </div>
-    </from>
+    </form>
 </template>
 
 <script>
@@ -52,6 +54,22 @@ export default {
     data() {
         return {
             cities: ['Москва', 'Санкт-Петербург', 'Казань'],
+            formName: {
+                text: '',
+                errorTxt: '',
+            },
+            formPhone: {
+                text: '',
+                errorTxt: '',
+            },
+            formEmail: {
+                text: '',
+                errorTxt: '',
+            },
+            formCity: {
+                text: '',
+                errorTxt: '',
+            },
         }
     },
     props: {
@@ -61,12 +79,10 @@ export default {
         },
     },
     beforeMount() {
-        this.cities.filter((el, index) => {
-            if (el === this.city) {
-                this.cities.splice(index, 1)
-                this.cities.unshift(this.city)
-            }
-        })
+        this.formCity.text = this.city
+    },
+    methods: {
+        submit() {},
     },
 }
 </script>
