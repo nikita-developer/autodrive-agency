@@ -9,7 +9,7 @@
                 <input
                     class="h-9 border-slate-300 w-full border rounded p-1"
                     type="text"
-                    placeholder="+7 (___) ___-__-__"
+                    placeholder="Иван Иванов"
                 />
             </label>
             <label class="sm:mb-0 mb-2 block">
@@ -17,7 +17,7 @@
                 <input
                     class="h-9 border-slate-300 w-full border rounded p-1"
                     type="text"
-                    placeholder="Иван Иванов"
+                    placeholder="+7 (___) ___-__-__"
                 />
             </label>
             <label class="sm:mb-0 mb-2 block">
@@ -31,8 +31,9 @@
             <label class="sm:mb-0 mb-2 block col-span-2 xl:col-span-1">
                 <p>Город*</p>
                 <select class="h-9 border-slate-300 w-full border rounded p-1">
-                    <option selected value="Москва">Москва</option>
-                    <option value="Санкт-Петербург">Санкт-Петербург</option>
+                    <option :value="elem" v-for="elem in cities" :key="elem">
+                        {{ elem }}
+                    </option>
                 </select>
             </label>
             <Button
@@ -47,6 +48,25 @@
 import Button from '../Button/Button.vue'
 export default {
     components: { Button },
+    data() {
+        return {
+            cities: ['Москва', 'Санкт-Петербург', 'Казань'],
+        }
+    },
+    props: {
+        city: {
+            type: String,
+            default: 'Москва',
+        },
+    },
+    beforeMount() {
+        this.cities.filter((el, index) => {
+            if (el === this.city) {
+                this.cities.splice(index, 1)
+                this.cities.unshift(this.city)
+            }
+        })
+    },
 }
 </script>
 
